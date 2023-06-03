@@ -25,7 +25,8 @@ public class StudentsArr {
         return i;
     }
 
-    public void addStudents(Students students) {
+    public void add(String name) {
+        Students students = new Students(new Predmeti(), name);
         if (marker == arr.length - 1) {
             Students newArr[] = new Students[2 * arr.length];
             for (int i = 0; i < arr.length; i++) {
@@ -39,7 +40,7 @@ public class StudentsArr {
         marker++;
     }
 
-    public void removeStudents(String name) {
+    public void remove(String name) {
         int index = indexOf(name);
         if (index >= 0 && index <= this.marker) {
             for (int i = 0; i < marker; i++) {

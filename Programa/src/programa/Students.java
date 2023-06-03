@@ -38,4 +38,37 @@ public class Students {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void addToSchedule(Teacher teacher){
+        int klasChasove = predmeti.get(teacher.getPredmet()).getChasove(), teacherChasove = teacher.getChasove();
+        if(klasChasove <= teacherChasove){
+            teacher.setChasove(teacherChasove - klasChasove);
+            int den = 0, chas = 0;
+            while(klasChasove > 0){
+                arr[den][chas] = teacher.getPredmet();
+                teacher.setArr(den, chas, teacher.getPredmet());
+                chas++;
+                if(chas >= 7){
+                    den++;
+                    chas = 0;
+                }
+                klasChasove--;
+            }
+            predmeti.get(teacher.getPredmet()).setChasove(0);
+        } else {
+            predmeti.get(teacher.getPredmet()).setChasove(klasChasove - teacherChasove);
+            int den = 0, chas = 0;
+            while(teacherChasove > 0){
+                arr[den][chas] = teacher.getPredmet();
+                teacher.setArr(den, chas, teacher.getPredmet());
+                chas++;
+                if(chas >= 7){
+                    den++;
+                    chas = 0;
+                }
+                teacherChasove--;
+            }
+            teacher.setChasove(0);
+        }
+    }
 }

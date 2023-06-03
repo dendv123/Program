@@ -4,37 +4,37 @@ public class TeacherList {
 
     private Teacher head = new Teacher();
 
-    public void add(String predmet, int chasove, String name) {
+    public void add(String name, String predmet, int chasove) {
         Teacher current = head.next;
         if (head.next == null) {
-            head.next = new Teacher(predmet, chasove, name);
+            head.next = new Teacher(name, predmet, chasove);
         } else {
             while (current.next != null) {
                 current = current.next;
             }
-            current.next = new Teacher(predmet, chasove, name);
+            current.next = new Teacher(name, predmet, chasove);
         }
     }
 
-    public void add(int index, String predmet, int chasove, String name) {
+    public void add(int index, String name, String predmet, int chasove) {
         if (index >= 1 && index <= this.size()) {
             Teacher prev = head.next;
             Teacher next;
             int n = 0;
             if (head.next == null) {
-                head.next = new Teacher(predmet, chasove, name);
+                head.next = new Teacher(name, predmet, chasove);
             } else {
                 while (prev.next != null && n < index - 1) {
                     n++;
                     prev = prev.next;
                 }
                 next = prev.next;
-                prev.next = new Teacher(predmet, chasove, name);
+                prev.next = new Teacher(name, predmet, chasove);
                 prev.next.next = next;
             }
         } else if (index == 0) {
             Teacher next = head.next;
-            head.next = new Teacher(predmet, chasove, name);
+            head.next = new Teacher(name, predmet, chasove);
             head.next.next = next;
         }
     }

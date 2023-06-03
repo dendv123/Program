@@ -6,13 +6,13 @@ public class Teacher extends Node {
     private String[][] arr = new String[5][7];
     public Teacher next;
 
-    public Teacher(String predmet, int chasove, String name) {
+    public Teacher(String name, String predmet, int chasove) {
         super(predmet, chasove);
         setName(name);
     }
 
     public Teacher() {
-        this("", 0, "");
+        this("", "", 0);
     }
 
     public String getName() {

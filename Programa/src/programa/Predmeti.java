@@ -40,6 +40,19 @@ public class Predmeti {
         return null;
     }
 
+    public Node get(String predmet) {
+        int br = 0;
+        Node current = head;
+        while (current.next != null) {
+            if (current.getPredmet().equals(predmet)) {
+                return current;
+            } else {
+                current = current.next;
+            }
+        }
+        return null;
+    }
+
     public int size() {
         int size = 0;
         Node current = head.next;
