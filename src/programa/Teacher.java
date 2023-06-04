@@ -7,7 +7,6 @@ public class Teacher {
     private String name;
     private String[][] arr = new String[5][7];
     private Predmet predmet;
-    private LinkedList <Student> classes = new LinkedList<>();
 
     public Teacher(Predmet predmet, String name) {
         setPredmet(predmet);
@@ -40,14 +39,6 @@ public class Teacher {
 
     public void setPredmet(Predmet predmet) {
         this.predmet = predmet;
-    }
-    
-    public LinkedList<Student> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(LinkedList<Student> classes) {
-        this.classes = classes;
     }
     
     @Override
