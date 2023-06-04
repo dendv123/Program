@@ -68,11 +68,11 @@ public class LinkedList <T> {
         return null;
     }
     
-    public Node <T> get(T data) {
+    public T get(T data) {
         Node <T> current = head;
         while(current.next != null){
             if(current.getData().equals(data)){
-                return current;
+                return current.getData();
             }
             else{
                 current = current.next;

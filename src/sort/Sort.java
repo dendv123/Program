@@ -4,16 +4,15 @@
  */
 package sort;
 
-import java.util.*;
-
+import ArrayList.ArrayList;
 /**
  *
  * @author user
  */
-public class Sort implements Quick <String> {
+public class Sort implements Quick {
 
     @Override
-    public int sortTeacher(int left, int right, ArrayList <String>arr) {
+    public int sortTeacher(int left, int right, ArrayList arr) {
         String pivot = arr.get(right - 1);
         int br = left;
         for(int i = left; i < right - 1; ++i){
@@ -32,7 +31,7 @@ public class Sort implements Quick <String> {
     }
 
     @Override
-    public void recTeacher(int left, int right, ArrayList <String> arr) {
+    public void recTeacher(int left, int right, ArrayList arr) {
         if(left >= right){
             return;
         }
@@ -44,7 +43,7 @@ public class Sort implements Quick <String> {
     }
 
     @Override
-    public int sortStudent(int left, int right, ArrayList<String> arr) {
+    public int sortStudent(int left, int right, ArrayList arr) {
         String pivot = arr.get(right - 1);
         int br = left;
         for(int i = left; i < right - 1; ++i){
@@ -65,7 +64,7 @@ public class Sort implements Quick <String> {
     }
 
     @Override
-    public void recStudent(int left, int right, ArrayList<String> arr) {
+    public void recStudent(int left, int right, ArrayList arr) {
         if(left >= right){
             return;
         }
