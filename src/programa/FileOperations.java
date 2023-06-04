@@ -160,22 +160,9 @@ public class FileOperations {
                         all += ",";
                     }
                 }
-                //System.out.println(all);
-                String[] classNames = all.split(",");
-                linkedList.LinkedList <Student> list = new linkedList.LinkedList<>();
-                for (int i = 2; i < classNames.length; ++i)
-                {
-                    System.out.println(classNames[i]);
-                    if (i % 3 == 2)
-                    {
-                        System.out.println("here");
-                        linkedList.LinkedList <Predmet> predmeti = new linkedList.LinkedList<>();
-                        predmeti.add(new Predmet(classNames[0], Integer.parseInt(classNames[i + 2])));
-                        list.add(new Student(classNames[i], predmeti));
-                    }
-                }
-                newT.setClasses(list);
-                newT.setPredmet(new Predmet(classNames[0], Integer.parseInt(classNames[1])));
+                String[] subj = all.split(",");
+                
+                newT.setPredmet(new Predmet(subj[0], Integer.parseInt(subj[1])));
                 teachers.add(newT);
             }
             School.teachers = teachers;

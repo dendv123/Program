@@ -46,7 +46,6 @@ public class School {
     private String[][] generateStudentsSchedule(int index) {
         Student klas = students[index];
         Predmet predmet;
-        String arr[][] = klas.getArr();
         for (int i = 0; i < klas.getPredmeti().size(); i++) {
             predmet = klas.getPredmeti().get(i);
             int br = 0;
@@ -86,7 +85,6 @@ public class School {
                 }
                 klasChasove--;
             }
-            s.getPredmeti().get(teacher.getPredmet()).setChasove(0);
         } else {
             s.getPredmeti().get(teacher.getPredmet()).setChasove(klasChasove - teacherChasove);
             int den = 0, chas = 0;
@@ -100,7 +98,6 @@ public class School {
                 }
                 teacherChasove--;
             }
-            teacher.getPredmet().setChasove(0);
         }
     }
     
