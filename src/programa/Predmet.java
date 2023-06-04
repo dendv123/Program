@@ -26,6 +26,10 @@ public class Predmet {
         setChasove(chasove);
     }
 
+    public Predmet(int chasove) {
+        setChasove(chasove);
+    }
+    
     public Predmet () {
         this("", 0);
     }

@@ -1,20 +1,21 @@
 package programa;
 
+import linkedList.LinkedList;
+
 public class Teacher {
 
     private String name;
     private String[][] arr = new String[5][7];
-    private String predmet;
-    private int chasove;
+    private Predmet predmet;
+    private LinkedList <Student> classes = new LinkedList<>();
 
-    public Teacher(String predmet, int chasove, String name) {
+    public Teacher(Predmet predmet, String name) {
         setPredmet(predmet);
-        setChasove(chasove);
         setName(name);
     }
 
     public Teacher() {
-        this("", 0, "");
+        this(new Predmet(), "");
     }
 
     public String getName() {
@@ -33,27 +34,27 @@ public class Teacher {
         arr[den - 1][chas - 1] = neshto;
     }
     
-    public String getPredmet() {
+    public Predmet getPredmet() {
         return predmet;
     }
 
-    public void setPredmet(String predmet) {
+    public void setPredmet(Predmet predmet) {
         this.predmet = predmet;
     }
-
-    public int getChasove() {
-        return chasove;
+    
+    public LinkedList<Student> getClasses() {
+        return classes;
     }
 
-    public void setChasove(int chasove) {
-        this.chasove = chasove;
+    public void setClasses(LinkedList<Student> classes) {
+        this.classes = classes;
     }
     
     @Override
     public String toString()
     {
-        return String.format("Name: %s, Subject: %s, Number of lessons: %d",
-                getName(), getPredmet(), getChasove());
+        return String.format("Name: %s, Subject: %s",
+                getName(), getPredmet());
     }
     
     @Override
