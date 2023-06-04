@@ -4,15 +4,14 @@
  */
 package sort;
 
-import java.util.*;
-
+import ArrayList.ArrayList;
 /**
  *
  * @author user
  */
-public interface Quick <tip> {
-    public int sortTeacher(int left, int right, ArrayList <tip> arr);
-    public int sortStudent(int left, int right, ArrayList <tip> arr);
-    public void recTeacher(int left, int right, ArrayList <tip> arr);
-    public void recStudent(int left, int right, ArrayList <tip> arr);
+public interface Quick {
+    public int sortTeacher(int left, int right, ArrayList arr);
+    public int sortStudent(int left, int right, ArrayList arr);
+    public void recTeacher(int left, int right, ArrayList arr);
+    public void recStudent(int left, int right, ArrayList arr);
 }

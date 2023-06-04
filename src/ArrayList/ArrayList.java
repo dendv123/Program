@@ -1,4 +1,4 @@
-package programa;
+package ArrayList;
 
 public class ArrayList {
 
@@ -12,6 +12,12 @@ public class ArrayList {
 
     public ArrayList() {
         arr = new String[1];
+    }
+    
+    public void set(int index, String value)
+    {
+        if (index >= size() || index < 0) return;
+        arr[index] = value;
     }
     
     public void setArr(String []newArr){
