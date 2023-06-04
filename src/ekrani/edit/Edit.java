@@ -392,6 +392,7 @@ public class Edit extends javax.swing.JFrame {
         Add obj = new Add();
         obj.setLblTeacherOrStudent("Въведете име на учител");
         obj.setCbbPredmet(School.PREDMETI);
+        obj.setCbbTeacherOrStudent(generateTeachers());
         this.dispose();
         obj.setVisible(true);
     }//GEN-LAST:event_btnAddTeacherActionPerformed
@@ -399,6 +400,7 @@ public class Edit extends javax.swing.JFrame {
     private void btnRemoveTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveTeacherActionPerformed
         Remove obj = new Remove();
         obj.setLblTeacherOrStudent("Изберете учител");
+        obj.setCbbTeacherOrStudent(generateTeachers());
         this.dispose();
         obj.setVisible(true);
     }//GEN-LAST:event_btnRemoveTeacherActionPerformed
@@ -406,6 +408,7 @@ public class Edit extends javax.swing.JFrame {
     private void btnEditPredmetTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPredmetTeacherActionPerformed
         EditPredmet obj = new EditPredmet();
         obj.setLblTeacherOrStudent("Изберете учител");
+        obj.setCbbTeacherOrStudent(generateTeachers());
         obj.setCbbPredmet(School.PREDMETI);
         this.dispose();
         obj.setVisible(true);
@@ -414,6 +417,7 @@ public class Edit extends javax.swing.JFrame {
     private void btnEditChasoveTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditChasoveTeacherActionPerformed
         EditChasove obj = new EditChasove();
         obj.setLblTeacherOrStudent("Изберете учител");
+        obj.setCbbTeacherOrStudent(generateTeachers());
         obj.setCbbPredmet(School.PREDMETI);
         this.dispose();
         obj.setVisible(true);
@@ -430,6 +434,16 @@ public class Edit extends javax.swing.JFrame {
             for(char j = 'А'; j <= 'В'; ++j){   
                 arr[ind++] = i + " " + j;
             }
+        }
+        return arr;
+    }
+    
+    public static String[] generateTeachers()
+    {
+        String arr[] = new String[School.teachers.size()];
+        for (int i = 0; i < School.teachers.size(); ++i)
+        {
+            arr[i] = School.teachers.get(i).getName();
         }
         return arr;
     }

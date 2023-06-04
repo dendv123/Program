@@ -30,6 +30,11 @@ public class Predmet {
         setChasove(chasove);
     }
     
+    public Predmet(String name)
+    {
+        setName(name);
+    }
+    
     public Predmet () {
         this("", 0);
     }
@@ -46,7 +51,6 @@ public class Predmet {
     {
         if (!(obj instanceof Predmet)) return false;
         Predmet obj2 = (Predmet)obj;
-        return obj2.getName().equals(this.getName()) &&
-                obj2.getChasove() == this.getChasove();
+        return obj2.getName().equals(this.getName());
     }
 }

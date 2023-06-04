@@ -10,6 +10,18 @@ public class School {
     public static final String[] PREDMETI = {"БЕЛ", "МАТ", "ФА", "ХООС", "БЗО",
         "ГИ", "ИЦ", "ФВС", "ИНФ", "ИТ", "АЕ", "НЕ", "ФИЛ"};
     
+    static
+    {
+        FileOperations.saveInfo();
+        for (int i = 0; i < 15; ++i)
+            System.out.println(students[i]);
+    }
+    
+    public School()
+    {
+        
+    }
+    
     private void addPredmetToStudents(String name, Predmet predmet){
         getStudent(name).getPredmeti().add(predmet);
     }
@@ -22,12 +34,12 @@ public class School {
         getStudent(name).getPredmeti().get(predmet).setChasove(predmet.getChasove());
     }
     
-    private Student getStudent(String name)
+    public static Student getStudent(String name)
     {
         Student s = new Student();
         for (int i = 0; i < students.length; ++i)
         {
-            if (name.equals(students[i].getName())) s = students[i];
+            if (name.equalsIgnoreCase(students[i].getName())) s = students[i];
         }
         return s;
     }

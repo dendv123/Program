@@ -5,6 +5,7 @@
 package ekrani.edit;
 
 import ekrani.edit.Edit;
+import programa.*;
 
 /**
  *
@@ -159,9 +160,38 @@ public class EditChasove extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
+        String predmet = cbbPredmet.getSelectedItem() + "";
+        int br;
+        try
+        {
+            br = Integer.parseInt(txtChasove.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            return;
+        }
+        if (lblTeacherOrStudent.getText().equals("Изберете клас"))
+        {
+            Student s = School.getStudent(studentOrTeacher);
+            if (s.getPredmeti().size() != 0 && s.getPredmeti().get(new Predmet(predmet)) != null)
+                s.getPredmeti().get(new Predmet(predmet)).setChasove(br);
+        }
+        else
+        {
+            for (int i = 0; i < School.teachers.size(); ++i)
+            {
+                if (studentOrTeacher.equals(School.teachers.get(i).getName()))
+                {
+                    School.teachers.get(i).getPredmet().setChasove(br);
+                    break;
+                }
+            }
+            
+        }
+        
         this.dispose();
         new Edit().setVisible(true);
-        // to be finished
     }//GEN-LAST:event_btnEnterActionPerformed
 
     public void setLblTeacherOrStudent(String label){

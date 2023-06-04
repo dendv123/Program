@@ -6,6 +6,6 @@ import ekrani.edit.Edit;
 public class Run extends NachalnaStranica{
 
     public static void main(String[] args) {
-        Edit.Run();
+        Run();
     }
 }
