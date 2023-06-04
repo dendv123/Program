@@ -23,7 +23,7 @@ public class FileOperations {
             fw = new FileWriter(file.getPath(), false);
             for(String line : lines)
             {
-                fw.write(line);   
+                fw.write((line + "\n").trim());   
             }
         } catch (IOException ex) {
             Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,7 +48,7 @@ public class FileOperations {
             for (String line: s)
             {
                 String [] value = line.split(",");
-                if(value[0].equals(value)){
+                if(value[0].equals(nameOfClass)){
                     str[br] += value[0];
                     str[br] += "," + "null\n";
                 }
@@ -67,7 +67,7 @@ public class FileOperations {
         }
     }
     
-    public static void removeFromTeachers(){
+    public static void removeFromTeachers(String name){
         try
         {
             File file = new File("src//files//teachers.csv");
@@ -79,7 +79,7 @@ public class FileOperations {
             for (String line: s)
             {
                 String [] value = line.split(",");
-                if(!value[0].equals(value))
+                if(!value[0].equals(name))
                 {
                     str[br] += line;
                 }

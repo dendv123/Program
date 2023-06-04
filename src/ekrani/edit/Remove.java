@@ -6,6 +6,10 @@ package ekrani.edit;
 
 import ekrani.edit.Edit;
 import javax.swing.JComboBox;
+import linkedList.LinkedList;
+import programa.FileOperations;
+import programa.School;
+import programa.Student;
 
 /**
  *
@@ -183,9 +187,27 @@ public class Remove extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbTeacherOrStudentActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
+        if (lblChoose.getText().equals("Изберете учител"))
+        {
+            for (int i = 0; i < School.teachers.size(); ++i)
+            {
+                if (School.teachers.get(i).getName().equals(studentOrTeacher))
+                {
+                    School.teachers.remove(i);
+                    break;
+                }
+            }
+            FileOperations.removeFromTeachers(studentOrTeacher);
+        }
+        else
+        {
+            Student s = School.getStudent(studentOrTeacher);
+            s.setPredmeti(new LinkedList<>());
+            FileOperations.removeFromStudents(studentOrTeacher);
+        }
         this.dispose();
         new Edit().setVisible(true);
-        // to be finished
     }//GEN-LAST:event_btnEnterActionPerformed
 
     public void setLblTeacherOrStudent(String label){

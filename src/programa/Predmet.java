@@ -30,6 +30,11 @@ public class Predmet {
         setChasove(chasove);
     }
     
+    public Predmet(String name)
+    {
+        setName(name);
+    }
+    
     public Predmet () {
         this("", 0);
     }

@@ -5,6 +5,7 @@
 package ekrani.edit;
 
 import ekrani.edit.Edit;
+import programa.FileOperations;
 
 /**
  *
@@ -18,6 +19,7 @@ public class EditPredmet extends javax.swing.JFrame {
     public EditPredmet() {
         initComponents();
         setLocationRelativeTo(null);
+        FileOperations.saveInfo();
     }
 
     /**
@@ -33,11 +35,11 @@ public class EditPredmet extends javax.swing.JFrame {
         lblTeacherOrStudent = new javax.swing.JLabel();
         lblPredmet = new javax.swing.JLabel();
         lblChasove = new javax.swing.JLabel();
-        txtPredmet = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnEnter = new javax.swing.JButton();
         cbbTeacherOrStudent = new javax.swing.JComboBox<>();
         cbbPredmet = new javax.swing.JComboBox<>();
+        cbbNewPredmet = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,19 +54,13 @@ public class EditPredmet extends javax.swing.JFrame {
 
         lblPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblPredmet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPredmet.setText("Изберете предмет");
+        lblPredmet.setText("Изберете предмет за замяна");
         lblPredmet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 2));
 
         lblChasove.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblChasove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblChasove.setText("Въведете нов предмет");
+        lblChasove.setText("Изберете нов предмет");
         lblChasove.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 2));
-
-        txtPredmet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPredmetActionPerformed(evt);
-            }
-        });
 
         btnBack.setBackground(new java.awt.Color(177, 142, 73));
         btnBack.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -90,6 +86,9 @@ public class EditPredmet extends javax.swing.JFrame {
         cbbPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbbPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
 
+        cbbNewPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbNewPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
+
         javax.swing.GroupLayout pnlAllLayout = new javax.swing.GroupLayout(pnlAll);
         pnlAll.setLayout(pnlAllLayout);
         pnlAllLayout.setHorizontalGroup(
@@ -103,14 +102,14 @@ public class EditPredmet extends javax.swing.JFrame {
                         .addComponent(btnEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlAllLayout.createSequentialGroup()
                         .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                            .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTeacherOrStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(cbbTeacherOrStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbbPredmet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbbTeacherOrStudent, 0, 169, Short.MAX_VALUE)
+                            .addComponent(cbbPredmet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbNewPredmet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         pnlAllLayout.setVerticalGroup(
@@ -125,9 +124,9 @@ public class EditPredmet extends javax.swing.JFrame {
                     .addComponent(lblPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbbPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblChasove, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPredmet, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(cbbNewPredmet))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
@@ -149,19 +148,21 @@ public class EditPredmet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPredmetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPredmetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPredmetActionPerformed
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String ans = "";
+        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
+        String predmet = cbbPredmet.getSelectedItem() + "";
+        String br = cbbNewPredmet.getSelectedItem() + "";
+        ans += studentOrTeacher + ",[" + predmet + "," + br + "]" + "\n";
+        ans.trim();
+        System.out.println(ans);
         this.dispose();
         new Edit().setVisible(true);
-        // to be finished
     }//GEN-LAST:event_btnEnterActionPerformed
 
     public void setLblTeacherOrStudent(String label){
@@ -178,8 +179,10 @@ public class EditPredmet extends javax.swing.JFrame {
     public void setCbbPredmet(String[] arr)
     {
         cbbPredmet.removeAllItems();
+        cbbNewPredmet.removeAllItems();
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
+            cbbNewPredmet.addItem(arr[i]);
         }
     }
     
@@ -218,12 +221,12 @@ public class EditPredmet extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEnter;
+    private javax.swing.JComboBox<String> cbbNewPredmet;
     private javax.swing.JComboBox<String> cbbPredmet;
     private javax.swing.JComboBox<String> cbbTeacherOrStudent;
     private javax.swing.JLabel lblChasove;
     private javax.swing.JLabel lblPredmet;
     private javax.swing.JLabel lblTeacherOrStudent;
     private javax.swing.JPanel pnlAll;
-    private javax.swing.JTextField txtPredmet;
     // End of variables declaration//GEN-END:variables
 }

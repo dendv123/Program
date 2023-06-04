@@ -1,7 +1,5 @@
 package programa;
 
-import linkedList.LinkedList;
-
 public class Teacher {
 
     private String name;
@@ -15,6 +13,10 @@ public class Teacher {
 
     public Teacher() {
         this(new Predmet(), "");
+    }
+
+    public Teacher(String name) {
+        setName(name);
     }
 
     public String getName() {
