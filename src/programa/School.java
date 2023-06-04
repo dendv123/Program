@@ -10,14 +10,7 @@ public class School {
     public static Student[] students = new Student[15];
     public static final String[] PREDMETI = {"БЕЛ", "МАТ", "ФА", "ХООС", "БЗО",
         "ГИ", "ИЦ", "ФВС", "ИНФ", "ИТ", "АЕ", "НЕ", "ФИЛ"};
-    
-    static
-    {
-        FileOperations.saveInfo();
-        for (int i = 0; i < 15; ++i)
-            System.out.println(students[i]);
-    }
-    
+
     public School()
     {
         
@@ -47,7 +40,8 @@ public class School {
     }
 
     public void generateSchedule() {
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 15; i++) {
+            System.out.println(students[i].getName());
             String arr[][] = generateStudentsSchedule(i);
             arr = scramble(arr);
             for (int j = 0; j < 5; j++) {
@@ -74,9 +68,7 @@ public class School {
                     break;
                 }
                 br++;
-                //i sega trybva da dobavya uchitelya kum purvoto svobodno vreme na uchenicite
             }
-            //generira se programata za klasa i se zaema ot vremeto na uchitelite
         }
         return klas.getArr();
 
