@@ -5,17 +5,21 @@
 package ekrani.edit;
 
 import ekrani.edit.Edit;
+import linkedList.LinkedList;
+import programa.Predmet;
+import programa.School;
+import programa.Student;
 
 /**
  *
  * @author user
  */
-public class Add extends javax.swing.JFrame {
+public class AddStudent extends javax.swing.JFrame {
 
     /**
      * Creates new form Add
      */
-    public Add() {
+    public AddStudent() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -159,13 +163,26 @@ public class Add extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        String ans = "";
-        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
+
+        String student = cbbTeacherOrStudent.getSelectedItem() + "";
         String predmet = cbbPredmet.getSelectedItem() + "";
-        String br = txtChasove.getText();
-        ans += studentOrTeacher + ",[" + predmet + "," + br + "]" + "\n";
-        ans.trim();
-        System.out.println(ans);
+        int br;
+        try
+        {
+            br = Integer.parseInt(txtChasove.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            return;
+        }
+        Student s = School.getStudent(student);
+        LinkedList <Predmet> predmeti = s.getPredmeti();
+        if (predmeti.get(new Predmet(predmet)) == null)
+        {
+            predmeti.add(new Predmet(predmet, br));
+        }
+        School.addStudentsToFile();
+
         this.dispose();
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
@@ -203,20 +220,21 @@ public class Add extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Add().setVisible(true);
+                new AddStudent().setVisible(true);
             }
         });
     }

@@ -23,7 +23,8 @@ public class FileOperations {
             fw = new FileWriter(file.getPath(), false);
             for(String line : lines)
             {
-                fw.write((line));   
+                System.out.println(line);
+                fw.write(line);   
             }
         } catch (IOException ex) {
             Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);

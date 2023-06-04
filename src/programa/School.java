@@ -35,11 +35,51 @@ public class School {
         getStudent(name).getPredmeti().get(predmet).setChasove(predmet.getChasove());
     }
 
+    public static void addStudentsToFile()
+    {
+        String[] lines = new String[16];
+        lines[0] = "name,predmet\n";
+        for (int i = 0; i < 15; ++i)
+        {
+            lines[i + 1] = "";
+            lines[i + 1] += School.students[i].getName()+",[";
+            for (int j = 0; j < School.students[i].getPredmeti().size(); ++j)
+            {
+                lines[i + 1] += "[";
+                lines[i + 1] += School.students[i].getPredmeti().get(j).getName();
+                lines[i + 1] += ",";
+                lines[i + 1] += School.students[i].getPredmeti().get(j).getChasove();
+                lines[i + 1] += "]";
+            }
+            lines[i + 1] += "]\n";
+        }
+        FileOperations.addToFile(lines, "src//files//students.csv");
+    }
+    
+    public static void addTeachersToFile()
+    {
+        String[] lines = new String[teachers.size() + 1];
+        System.out.println(teachers.size());
+        lines[0] = "name,predmet\n";
+        int br = 1;
+        for (Teacher teacher: teachers)
+        {
+            lines[br] = "";
+            lines[br] += teacher.getName()+",[";
+            lines[br] += teacher.getPredmet().getName();
+            lines[br] += ",";
+            lines[br] += teacher.getPredmet().getChasove() + "";
+            lines[br] += "]\n";
+            System.out.println(lines[br]);
+            br ++;
+        }
+        FileOperations.addToFile(lines, "src//files//teachers.csv");
+    }
 
     public static Student getStudent(String name) {
         Student s = new Student();
-        for (int i = 0; i < students.length; ++i) {
-            if (name.equals(students[i].getName())) {
+        for (int i = 0; i < 15; ++i) {
+            if (name.equalsIgnoreCase(students[i].getName())) {
                 s = students[i];
             }
         }
@@ -47,7 +87,7 @@ public class School {
     }
 
     public void generateSchedule() {
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 15; i++) {
             String arr[][] = generateStudentsSchedule(i);
             arr = scramble(arr);
             for (int j = 0; j < 5; j++) {
@@ -56,6 +96,7 @@ public class School {
                 }
                 System.out.println("");
             }
+            System.out.println("\n##########################\n");
         }
     }
 

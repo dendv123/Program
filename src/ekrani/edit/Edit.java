@@ -354,7 +354,7 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBack3ActionPerformed
 
     private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
-        Add obj = new Add();
+        AddStudent obj = new AddStudent();
         obj.setLblTeacherOrStudent("Въведете клас");
         obj.setCbbTeacherOrStudent(generateStudent());
         obj.setCbbPredmet(School.PREDMETI);
@@ -389,10 +389,9 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditChasoveStudentActionPerformed
 
     private void btnAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTeacherActionPerformed
-        Add obj = new Add();
+        AddTeacher obj = new AddTeacher();
         obj.setLblTeacherOrStudent("Въведете име на учител");
         obj.setCbbPredmet(School.PREDMETI);
-        obj.setCbbTeacherOrStudent(generateTeachers());
         this.dispose();
         obj.setVisible(true);
     }//GEN-LAST:event_btnAddTeacherActionPerformed
