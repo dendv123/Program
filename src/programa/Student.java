@@ -8,13 +8,13 @@ public class Student {
     private String[][] arr = new String[5][7];
     private String name;
 
-    public Student(LinkedList <Predmet> predmeti, String name) {
+    public Student(String name, LinkedList <Predmet> predmeti) {
         setName(name);
         setPredmeti(predmeti);
     }
 
     public Student() {
-        this(new LinkedList<>(), "");
+        this("", new LinkedList<>());
     }
 
     public LinkedList <Predmet> getPredmeti() {

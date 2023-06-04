@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -35,7 +34,6 @@ public class FileOperations {
                 Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
     }
     
     public static void removeFromStudents(String nameOfClass){
@@ -108,6 +106,8 @@ public class FileOperations {
             List<String> s = new LinkedList<>();
             s = readerStudents.lines().collect(Collectors.toCollection(LinkedList::new));
             s.remove(0);
+            Student[] arr = new Student[15];
+            int br = 0;
             for(String line : s){
                 Student newSt = new Student();
                 String []values = line.split(",", 2);
@@ -136,10 +136,12 @@ public class FileOperations {
                     }
                 }
                 newSt.setPredmeti(newPr);
+                arr[br++] = newSt;
             }
             List<String> t = new LinkedList<>();
             t = readerTeachers.lines().collect(Collectors.toCollection(LinkedList::new));
             t.remove(0);
+            LinkedList <Teacher> teachers = new LinkedList<>();
             for (String line : t)
             {
                 Teacher newT = new Teacher();
@@ -158,12 +160,26 @@ public class FileOperations {
                         all += ",";
                     }
                 }
-                
-                String[] v = all.split(",");
-                System.out.println(all);
-                // to be finished
+                //System.out.println(all);
+                String[] classNames = all.split(",");
+                linkedList.LinkedList <Student> list = new linkedList.LinkedList<>();
+                for (int i = 2; i < classNames.length; ++i)
+                {
+                    System.out.println(classNames[i]);
+                    if (i % 3 == 2)
+                    {
+                        System.out.println("here");
+                        linkedList.LinkedList <Predmet> predmeti = new linkedList.LinkedList<>();
+                        predmeti.add(new Predmet(classNames[0], Integer.parseInt(classNames[i + 2])));
+                        list.add(new Student(classNames[i], predmeti));
+                    }
+                }
+                newT.setClasses(list);
+                newT.setPredmet(new Predmet(classNames[0], Integer.parseInt(classNames[1])));
+                teachers.add(newT);
             }
-            
+            School.teachers = teachers;
+            School.students = arr;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

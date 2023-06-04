@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class School {
 
-    private LinkedList<Teacher> teachers = new LinkedList<>();
-    private Student[] students = new Student[15];
+    public static LinkedList<Teacher> teachers = new LinkedList<>();
+    public static Student[] students = new Student[15];
     public static final String[] PREDMETI = {"БЕЛ", "МАТ", "ФА", "ХООС", "БЗО",
         "ГИ", "ИЦ", "ФВС", "ИНФ", "ИТ", "АЕ", "НЕ", "ФИЛ"};
     
