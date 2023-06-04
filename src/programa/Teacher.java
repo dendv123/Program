@@ -30,7 +30,7 @@ public class Teacher {
     }
 
     public void setArr(int den, int chas, String neshto) {
-        arr[den - 1][chas - 1] = neshto;
+        arr[den][chas] = neshto;
     }
     
     public Predmet getPredmet() {

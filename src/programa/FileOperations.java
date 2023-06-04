@@ -108,6 +108,8 @@ public class FileOperations {
             List<String> s = new LinkedList<>();
             s = readerStudents.lines().collect(Collectors.toCollection(LinkedList::new));
             s.remove(0);
+            Student[] arr = new Student[15];
+            int br = 0;
             for(String line : s){
                 Student newSt = new Student();
                 String []values = line.split(",", 2);
@@ -136,10 +138,12 @@ public class FileOperations {
                     }
                 }
                 newSt.setPredmeti(newPr);
+                arr[br++] = newSt;
             }
             List<String> t = new LinkedList<>();
             t = readerTeachers.lines().collect(Collectors.toCollection(LinkedList::new));
             t.remove(0);
+            LinkedList <Teacher> teachers = new LinkedList<>();
             for (String line : t)
             {
                 Teacher newT = new Teacher();
@@ -158,11 +162,13 @@ public class FileOperations {
                         all += ",";
                     }
                 }
-                
-                String[] v = all.split(",");
-                System.out.println(all);
-                // to be finished
+                String[] subj = all.split(",");
+
+                newT.setPredmet(new Predmet(subj[0], Integer.parseInt(subj[1])));
+                teachers.add(newT);
             }
+            School.teachers = teachers;
+            School.students = arr;
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);

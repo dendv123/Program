@@ -7,6 +7,8 @@ package ekrani;
 import ekrani.show.StudentsStranica;
 import ekrani.show.TeachersStranica;
 import ekrani.edit.Edit;
+import programa.FileOperations;
+import programa.School;
 
 /**
  *
@@ -253,7 +255,8 @@ public class NachalnaStranica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        // TODO add your handling code here:
+        FileOperations.saveInfo();
+        new School().generateSchedule();
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed

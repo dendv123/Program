@@ -8,7 +8,7 @@ import sort.Sort;
 public class Run extends NachalnaStranica{
 
     public static void main(String[] args) {
-        FileOperations.saveInfo();
-        //Edit.Run();
+        
+        NachalnaStranica.Run();
     }
 }
