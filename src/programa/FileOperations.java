@@ -23,7 +23,6 @@ public class FileOperations {
             fw = new FileWriter(file.getPath(), false);
             for(String line : lines)
             {
-                System.out.println(line);
                 fw.write(line);   
             }
         } catch (IOException ex) {

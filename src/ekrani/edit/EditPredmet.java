@@ -5,7 +5,10 @@
 package ekrani.edit;
 
 import ekrani.edit.Edit;
-import programa.FileOperations;
+import programa.Predmet;
+import programa.School;
+import programa.Student;
+import programa.Teacher;
 
 /**
  *
@@ -19,7 +22,6 @@ public class EditPredmet extends javax.swing.JFrame {
     public EditPredmet() {
         initComponents();
         setLocationRelativeTo(null);
-        FileOperations.saveInfo();
     }
 
     /**
@@ -154,19 +156,40 @@ public class EditPredmet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        String ans = "";
         String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
-        String predmet = cbbPredmet.getSelectedItem() + "";
-        String br = cbbNewPredmet.getSelectedItem() + "";
-        ans += studentOrTeacher + ",[" + predmet + "," + br + "]" + "\n";
-        ans.trim();
-        System.out.println(ans);
+        String predmetOld = cbbPredmet.getSelectedItem() + "";
+        String predmetNew = cbbNewPredmet.getSelectedItem() + "";
+        if (lblTeacherOrStudent.getText().equals("Изберете учител"))
+        {
+            for (Teacher teacher: School.teachers)
+            {
+                if (teacher.getName().equals(studentOrTeacher))
+                {
+                    teacher.getPredmet().setName(predmetNew);
+                }
+            }
+            School.addTeachersToFile();
+        }
+        else
+        {
+            Student s = School.getStudent(studentOrTeacher);
+            if (s.getPredmeti().get(new Predmet(predmetOld)) != null)
+            {
+                if (s.getPredmeti().get(new Predmet(predmetNew)) == null)
+                    s.getPredmeti().get(new Predmet(predmetOld)).setName(predmetNew);
+            }
+            School.addStudentsToFile();
+        }
         this.dispose();
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
     public void setLblTeacherOrStudent(String label){
         lblTeacherOrStudent.setText(label);
+        if (lblTeacherOrStudent.getText().equals("Изберете учител"))
+        {
+            cbbPredmet.setEnabled(false);
+        }
     }
     
     public void setCbbTeacherOrStudent(String []arr){

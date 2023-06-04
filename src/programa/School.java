@@ -11,13 +11,6 @@ public class School {
     public static final String[] PREDMETI = {"БЕЛ", "МАТ", "ФА", "ХООС", "БЗО",
         "ГИ", "ИЦ", "ФВС", "ИНФ", "ИТ", "АЕ", "НЕ", "ФИЛ"};
     
-    static
-    {
-        FileOperations.saveInfo();
-        for (int i = 0; i < 15; ++i)
-            System.out.println(students[i]);
-    }
-    
     public School()
     {
         
@@ -59,7 +52,6 @@ public class School {
     public static void addTeachersToFile()
     {
         String[] lines = new String[teachers.size() + 1];
-        System.out.println(teachers.size());
         lines[0] = "name,predmet\n";
         int br = 1;
         for (Teacher teacher: teachers)
@@ -70,7 +62,6 @@ public class School {
             lines[br] += ",";
             lines[br] += teacher.getPredmet().getChasove() + "";
             lines[br] += "]\n";
-            System.out.println(lines[br]);
             br ++;
         }
         FileOperations.addToFile(lines, "src//files//teachers.csv");
