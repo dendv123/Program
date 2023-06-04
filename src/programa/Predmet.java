@@ -46,7 +46,6 @@ public class Predmet {
     {
         if (!(obj instanceof Predmet)) return false;
         Predmet obj2 = (Predmet)obj;
-        return obj2.getName().equals(this.getName()) &&
-                obj2.getChasove() == this.getChasove();
+        return obj2.getName().equals(this.getName());
     }
 }

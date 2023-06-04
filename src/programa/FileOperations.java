@@ -161,7 +161,6 @@ public class FileOperations {
                     }
                 }
                 String[] subj = all.split(",");
-                
                 newT.setPredmet(new Predmet(subj[0], Integer.parseInt(subj[1])));
                 teachers.add(newT);
             }

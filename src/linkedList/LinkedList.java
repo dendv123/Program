@@ -57,20 +57,21 @@ public class LinkedList <T> {
 
     public T get(int index) {
         int br = 0;
-        Node <T> current = head;
-        while (current.next != null) {
+        Node <T> current = head.next;
+        while (current != null) {
             if (br == index) {
                 return current.getData();
             } else {
                 current = current.next;
             }
+            br++;
         }
         return null;
     }
     
     public T get(T data) {
-        Node <T> current = head;
-        while(current.next != null){
+        Node <T> current = head.next;
+        while(current != null){
             if(current.getData().equals(data)){
                 return current.getData();
             }
