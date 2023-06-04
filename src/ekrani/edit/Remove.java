@@ -183,9 +183,12 @@ public class Remove extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbTeacherOrStudentActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String ans = "";
+        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
+        ans += studentOrTeacher + "\n";
+        ans.trim();
         this.dispose();
         new Edit().setVisible(true);
-        // to be finished
     }//GEN-LAST:event_btnEnterActionPerformed
 
     public void setLblTeacherOrStudent(String label){
