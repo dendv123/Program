@@ -176,6 +176,7 @@ public class EditChasove extends javax.swing.JFrame {
             Student s = School.getStudent(studentOrTeacher);
             if (s.getPredmeti().size() != 0 && s.getPredmeti().get(new Predmet(predmet)) != null)
                 s.getPredmeti().get(new Predmet(predmet)).setChasove(br);
+            School.addStudentsToFile();
         }
         else
         {
@@ -187,7 +188,7 @@ public class EditChasove extends javax.swing.JFrame {
                     break;
                 }
             }
-            
+            School.addTeachersToFile();
         }
         
         this.dispose();
