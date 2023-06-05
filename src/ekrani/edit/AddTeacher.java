@@ -4,22 +4,20 @@
  */
 package ekrani.edit;
 
-import ekrani.edit.Edit;
 import programa.Predmet;
 import programa.School;
-import programa.Student;
 import programa.Teacher;
 
 /**
  *
- * @author user
+ * @author Ventsislav Peychev
  */
-public class EditPredmet extends javax.swing.JFrame {
+public class AddTeacher extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditPredmet
+     * Creates new form AddTeacher
      */
-    public EditPredmet() {
+    public AddTeacher() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -37,32 +35,37 @@ public class EditPredmet extends javax.swing.JFrame {
         lblTeacherOrStudent = new javax.swing.JLabel();
         lblPredmet = new javax.swing.JLabel();
         lblChasove = new javax.swing.JLabel();
+        txtChasove = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnEnter = new javax.swing.JButton();
-        cbbTeacherOrStudent = new javax.swing.JComboBox<>();
         cbbPredmet = new javax.swing.JComboBox<>();
-        cbbNewPredmet = new javax.swing.JComboBox<>();
+        txtName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         pnlAll.setBackground(new java.awt.Color(205, 165, 87));
         pnlAll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 4));
 
         lblTeacherOrStudent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblTeacherOrStudent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTeacherOrStudent.setText("Изберете клас/учител");
+        lblTeacherOrStudent.setText("Въведете клас/учител");
         lblTeacherOrStudent.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 2));
 
         lblPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblPredmet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPredmet.setText("Изберете предмет за замяна");
+        lblPredmet.setText("Въведете предмет");
         lblPredmet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 2));
 
         lblChasove.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblChasove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblChasove.setText("Изберете нов предмет");
+        lblChasove.setText("Въведете брой часове");
         lblChasove.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 125, 31), 2));
+
+        txtChasove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChasoveActionPerformed(evt);
+            }
+        });
 
         btnBack.setBackground(new java.awt.Color(177, 142, 73));
         btnBack.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -82,14 +85,14 @@ public class EditPredmet extends javax.swing.JFrame {
             }
         });
 
-        cbbTeacherOrStudent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbbTeacherOrStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "а", "б", "в" }));
-
         cbbPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbbPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
+        cbbPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "а", "б", "в" }));
 
-        cbbNewPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbbNewPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAllLayout = new javax.swing.GroupLayout(pnlAll);
         pnlAll.setLayout(pnlAllLayout);
@@ -104,31 +107,31 @@ public class EditPredmet extends javax.swing.JFrame {
                         .addComponent(btnEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlAllLayout.createSequentialGroup()
                         .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                             .addComponent(lblPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTeacherOrStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbbTeacherOrStudent, 0, 169, Short.MAX_VALUE)
-                            .addComponent(cbbPredmet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbbNewPredmet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtChasove, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbbPredmet, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         pnlAllLayout.setVerticalGroup(
             pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAllLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbbTeacherOrStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(lblTeacherOrStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTeacherOrStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbbPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                    .addComponent(lblPredmet, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(cbbPredmet))
                 .addGap(18, 18, 18)
-                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblChasove, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(cbbNewPredmet))
+                .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblChasove, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtChasove, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
@@ -144,11 +147,15 @@ public class EditPredmet extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtChasoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChasoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChasoveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
@@ -156,56 +163,39 @@ public class EditPredmet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        String studentOrTeacher = cbbTeacherOrStudent.getSelectedItem() + "";
-        String predmetOld = cbbPredmet.getSelectedItem() + "";
-        String predmetNew = cbbNewPredmet.getSelectedItem() + "";
-        if (lblTeacherOrStudent.getText().equals("Изберете учител"))
+        String name = txtName.getText();
+        String predmet = cbbPredmet.getSelectedItem() + "";
+        int br;
+        try
         {
-            for (Teacher teacher: School.teachers)
-            {
-                if (teacher.getName().equals(studentOrTeacher))
-                {
-                    teacher.getPredmet().setName(predmetNew);
-                }
-            }
-            School.addTeachersToFile();
+            br = Integer.parseInt(txtChasove.getText());
         }
-        else
+        catch(NumberFormatException e)
         {
-            Student s = School.getStudent(studentOrTeacher);
-            if (s.getPredmeti().get(new Predmet(predmetOld)) != null)
-            {
-                if (s.getPredmeti().get(new Predmet(predmetNew)) == null)
-                    s.getPredmeti().get(new Predmet(predmetOld)).setName(predmetNew);
-            }
-            School.addStudentsToFile();
+            return;
         }
+        
+        School.teachers.add(new Teacher(name, new Predmet(predmet, br)));
+        System.out.println(School.teachers);
+        School.addTeachersToFile();
+        
         this.dispose();
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
     public void setLblTeacherOrStudent(String label){
         lblTeacherOrStudent.setText(label);
-        if (lblTeacherOrStudent.getText().equals("Изберете учител"))
-        {
-            cbbPredmet.setEnabled(false);
-        }
-    }
-    
-    public void setCbbTeacherOrStudent(String []arr){
-        cbbTeacherOrStudent.removeAllItems();
-        for(int i = 0; i < arr.length; ++i){
-            cbbTeacherOrStudent.addItem(arr[i]);
-        }
     }
     
     public void setCbbPredmet(String[] arr)
     {
         cbbPredmet.removeAllItems();
-        cbbNewPredmet.removeAllItems();
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
-            cbbNewPredmet.addItem(arr[i]);
         }
     }
     
@@ -223,20 +213,20 @@ public class EditPredmet extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditPredmet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditPredmet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditPredmet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditPredmet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTeacher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditPredmet().setVisible(true);
+                new AddTeacher().setVisible(true);
             }
         });
     }
@@ -244,12 +234,12 @@ public class EditPredmet extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEnter;
-    private javax.swing.JComboBox<String> cbbNewPredmet;
     private javax.swing.JComboBox<String> cbbPredmet;
-    private javax.swing.JComboBox<String> cbbTeacherOrStudent;
     private javax.swing.JLabel lblChasove;
     private javax.swing.JLabel lblPredmet;
     private javax.swing.JLabel lblTeacherOrStudent;
     private javax.swing.JPanel pnlAll;
+    private javax.swing.JTextField txtChasove;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

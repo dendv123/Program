@@ -22,6 +22,7 @@ public class NachalnaStranica extends javax.swing.JFrame {
     public NachalnaStranica() {
         initComponents();
         setLocationRelativeTo(null);
+        FileOperations.saveInfo();
     }
 
     /**
@@ -274,9 +275,6 @@ public class NachalnaStranica extends javax.swing.JFrame {
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void Run() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -6,13 +6,13 @@ public class Teacher {
     private String[][] arr = new String[5][7];
     private Predmet predmet;
 
-    public Teacher(Predmet predmet, String name) {
+    public Teacher(String name, Predmet predmet) {
         setPredmet(predmet);
         setName(name);
     }
 
     public Teacher() {
-        this(new Predmet(), "");
+        this("", new Predmet());
     }
 
     public Teacher(String name) {

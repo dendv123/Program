@@ -23,7 +23,7 @@ public class FileOperations {
             fw = new FileWriter(file.getPath(), false);
             for(String line : lines)
             {
-                fw.write((line + "\n").trim());   
+                fw.write(line);   
             }
         } catch (IOException ex) {
             Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,17 +47,19 @@ public class FileOperations {
             int br = 0;
             for (String line: s)
             {
+                str[br] = "";
                 String [] value = line.split(",");
-                if(value[0].equals(nameOfClass)){
+                if(value[0].equalsIgnoreCase(nameOfClass)){
                     str[br] += value[0];
-                    str[br] += "," + "null\n";
+                    str[br] += "," + "[]\n";
                 }
                 else{
-                    str[br] += line;
+                    str[br] += line + "\n";
                 }
                 br++;
             }
             reader.close();
+            
             addToFile(str, file.getPath());
         } 
         catch (IOException e)
@@ -78,10 +80,11 @@ public class FileOperations {
             int br = 0;
             for (String line: s)
             {
+                str[br] = "";
                 String [] value = line.split(",");
                 if(!value[0].equals(name))
                 {
-                    str[br] += line;
+                    str[br] += line + "\n";
                 }
                 br++;
             }
