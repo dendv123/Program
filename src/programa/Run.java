@@ -1,7 +1,6 @@
 package programa;
 
 import ekrani.NachalnaStranica;
-import ekrani.edit.Edit;
 
 public class Run extends NachalnaStranica{
 
