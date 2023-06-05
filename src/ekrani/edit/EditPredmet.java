@@ -86,9 +86,19 @@ public class EditPredmet extends javax.swing.JFrame {
 
         cbbTeacherOrStudent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbbTeacherOrStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "а", "б", "в" }));
+        cbbTeacherOrStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTeacherOrStudentActionPerformed(evt);
+            }
+        });
 
         cbbPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbbPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
+        cbbPredmet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbPredmetActionPerformed(evt);
+            }
+        });
 
         cbbNewPredmet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbbNewPredmet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "г", "д", "е" }));
@@ -186,6 +196,15 @@ public class EditPredmet extends javax.swing.JFrame {
         new Edit().setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
+    private void cbbPredmetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPredmetActionPerformed
+        
+    }//GEN-LAST:event_cbbPredmetActionPerformed
+
+    private void cbbTeacherOrStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTeacherOrStudentActionPerformed
+        if (!lblTeacherOrStudent.getText().equals("Изберете учител")) return;
+        setCbbPredmet(School.Predmeti);
+    }//GEN-LAST:event_cbbTeacherOrStudentActionPerformed
+
     public void setLblTeacherOrStudent(String label){
         lblTeacherOrStudent.setText(label);
         if (lblTeacherOrStudent.getText().equals("Изберете учител"))
@@ -207,7 +226,20 @@ public class EditPredmet extends javax.swing.JFrame {
         cbbNewPredmet.removeAllItems();
         new Sort().sort(arr);
         for(int i = 0; i < arr.length; ++i){
-            cbbPredmet.addItem(arr[i]);
+            if (lblTeacherOrStudent.getText().equals("Изберете учител"))
+            {
+                for (Teacher t: School.teachers)
+                {
+                    if (t.getName().equals(cbbTeacherOrStudent.getSelectedItem() + ""))
+                    {
+                        cbbPredmet.addItem(t.getPredmet().getName());
+                    }
+                }
+            }
+            else
+            {
+                cbbPredmet.addItem(arr[i]);
+            }
             cbbNewPredmet.addItem(arr[i]);
         }
     }
