@@ -4,9 +4,12 @@
  */
 package ekrani.edit;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import programa.Predmet;
 import programa.School;
 import programa.Teacher;
+import sort.Sort;
 
 /**
  *
@@ -20,7 +23,8 @@ public class AddTeacher extends javax.swing.JFrame {
     public AddTeacher() {
         initComponents();
         setLocationRelativeTo(null);
-    }
+        setTitle("Добавяне на учител");
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,6 +168,7 @@ public class AddTeacher extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String name = txtName.getText();
+        if(!nameChecker(name)) return;
         String predmet = cbbPredmet.getSelectedItem() + "";
         int br;
         try
@@ -172,6 +177,9 @@ public class AddTeacher extends javax.swing.JFrame {
         }
         catch(NumberFormatException e)
         {
+            return;
+        }
+        if(School.teachers.contains(new Teacher(name))){
             return;
         }
         
@@ -194,9 +202,17 @@ public class AddTeacher extends javax.swing.JFrame {
     public void setCbbPredmet(String[] arr)
     {
         cbbPredmet.removeAllItems();
+        new Sort().sort(arr);
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
         }
+        
+    }
+    
+    public boolean nameChecker(String name){
+        Pattern p = Pattern.compile("[А-Я][а-я]+[ ][А-Я][а-я]+");
+        Matcher m = p.matcher(name);
+        return m.matches();
     }
     
     public static void Run() {

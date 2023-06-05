@@ -6,6 +6,7 @@ package ekrani.edit;
 
 import ekrani.NachalnaStranica;
 import programa.School;
+import sort.Sort;
 
 /**
  *
@@ -444,6 +445,7 @@ public class Edit extends javax.swing.JFrame {
         {
             arr[i] = School.teachers.get(i).getName();
         }
+        new Sort().sort(arr);
         return arr;
     }
     

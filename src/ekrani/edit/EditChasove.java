@@ -6,6 +6,7 @@ package ekrani.edit;
 
 import ekrani.edit.Edit;
 import programa.*;
+import sort.Sort;
 
 /**
  *
@@ -19,6 +20,7 @@ public class EditChasove extends javax.swing.JFrame {
     public EditChasove() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Промяна на брой часове");
     }
 
     /**
@@ -209,6 +211,7 @@ public class EditChasove extends javax.swing.JFrame {
     public void setCbbPredmet(String[] arr)
     {
         cbbPredmet.removeAllItems();
+        new Sort().sort(arr);
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
         }

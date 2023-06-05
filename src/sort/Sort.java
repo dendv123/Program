@@ -12,26 +12,26 @@ import ArrayList.ArrayList;
 public class Sort implements Quick {
 
     @Override
-    public int sortTeacher(int left, int right, ArrayList arr) {
-        String pivot = arr.get(right - 1);
+    public int sortTeacher(int left, int right, String [] arr) {
+        String pivot = arr[right - 1];
         int br = left;
         for(int i = left; i < right - 1; ++i){
-            if(arr.get(i).compareTo(pivot) < 0){
-                String a = arr.get(i);
-                arr.set(i, arr.get(br));
-                arr.set(br, a);
+            if(arr[i].compareTo(pivot) < 0){
+                String a = arr[i];
+                arr[i] = arr[br];
+                arr[br] = a;
                 br++;
             }
         }
-        String a = arr.get(right - 1);
-        arr.set(right - 1, arr.get(br));
-        arr.set(br, a);
+        String a = arr[right - 1];
+        arr[right - 1] = arr[br];
+        arr[br] = a;
         
         return br;
     }
 
     @Override
-    public void recTeacher(int left, int right, ArrayList arr) {
+    public void recTeacher(int left, int right, String [] arr) {
         if(left >= right){
             return;
         }
@@ -73,5 +73,10 @@ public class Sort implements Quick {
         
         recStudent(left, pi, arr);
         recStudent(pi + 1, right, arr);
+    }
+    
+    public void sort(String[] arr)
+    {
+        recTeacher(0, arr.length, arr);
     }
 }

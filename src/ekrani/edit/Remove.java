@@ -23,6 +23,7 @@ public class Remove extends javax.swing.JFrame {
     public Remove() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Премахване");
     }
 
     /**

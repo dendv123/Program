@@ -10,8 +10,8 @@ import ArrayList.ArrayList;
  * @author user
  */
 public interface Quick {
-    public int sortTeacher(int left, int right, ArrayList arr);
+    public int sortTeacher(int left, int right, String [] arr);
     public int sortStudent(int left, int right, ArrayList arr);
-    public void recTeacher(int left, int right, ArrayList arr);
+    public void recTeacher(int left, int right, String [] arr);
     public void recStudent(int left, int right, ArrayList arr);
 }

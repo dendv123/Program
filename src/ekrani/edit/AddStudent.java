@@ -9,6 +9,7 @@ import linkedList.LinkedList;
 import programa.Predmet;
 import programa.School;
 import programa.Student;
+import sort.Sort;
 
 /**
  *
@@ -22,6 +23,7 @@ public class AddStudent extends javax.swing.JFrame {
     public AddStudent() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Добавяне на предмет");
     }
 
     /**
@@ -201,6 +203,7 @@ public class AddStudent extends javax.swing.JFrame {
     public void setCbbPredmet(String[] arr)
     {
         cbbPredmet.removeAllItems();
+        new Sort().sort(arr);
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
         }

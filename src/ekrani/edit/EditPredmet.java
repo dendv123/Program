@@ -9,6 +9,7 @@ import programa.Predmet;
 import programa.School;
 import programa.Student;
 import programa.Teacher;
+import sort.Sort;
 
 /**
  *
@@ -22,6 +23,7 @@ public class EditPredmet extends javax.swing.JFrame {
     public EditPredmet() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Промяна на предмет");
     }
 
     /**
@@ -203,6 +205,7 @@ public class EditPredmet extends javax.swing.JFrame {
     {
         cbbPredmet.removeAllItems();
         cbbNewPredmet.removeAllItems();
+        new Sort().sort(arr);
         for(int i = 0; i < arr.length; ++i){
             cbbPredmet.addItem(arr[i]);
             cbbNewPredmet.addItem(arr[i]);
