@@ -422,7 +422,7 @@ public class Edit extends javax.swing.JFrame {
         return arr;
     }
     
-    public static String[] generateTeachers()
+    public static String[] generateTeachers()   
     {
         String arr[] = new String[School.teachers.size()];
         for (int i = 0; i < School.teachers.size(); ++i)

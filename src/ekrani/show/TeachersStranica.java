@@ -5,7 +5,7 @@
 package ekrani.show;
 
 import ekrani.NachalnaStranica;
-import ekrani.NachalnaStranica;
+import ekrani.edit.Edit;
 
 /**
  *
@@ -20,6 +20,7 @@ public class TeachersStranica extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Учителска програма");
+        setCbbTeacherOrStudent(Edit.generateTeachers());
     }
 
     /**
@@ -171,38 +172,13 @@ public class TeachersStranica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     
-    public static void Run(){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeachersStranica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeachersStranica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeachersStranica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeachersStranica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public void setCbbTeacherOrStudent(String []arr){
+        cbbTeacher.removeAllItems();
+        for(int i = 0; i < arr.length; ++i){
+            cbbTeacher.addItem(arr[i]);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TeachersStranica().setVisible(true);
-            }
-        });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
