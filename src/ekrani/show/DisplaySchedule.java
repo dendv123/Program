@@ -6,7 +6,6 @@
 package ekrani.show;
 
 import ekrani.NachalnaStranica;
-import programa.Chas;
 
 /**
  *
@@ -17,21 +16,11 @@ public class DisplaySchedule extends javax.swing.JFrame {
     /**
      * Creates new form DisplaySchedule
      */
-    public DisplaySchedule(Chas[][] arr) {
+    public DisplaySchedule() {
         initComponents();
         txtArSchedule.setEditable(false);
-        String text = "Пн\tВт\tСр\tЧт\tПт\n";
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (arr[j][i] == null) {
-                    text += "- \t";
-                } else {
-                    text += arr[j][i].getPredmet() + "\t";
-                }
-            }
-            text += "\n";
-        }
-        txtArSchedule.setText(text);
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -101,7 +90,19 @@ public class DisplaySchedule extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnEnterActionPerformed
 
-
+    public void setArea(String[][] arr)
+    {
+        String text = "Пн\tВт\tСр\tЧт\tПт\n";
+        for (int i = 0; i < arr[0].length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                text += arr[j][i] + "\t";
+            }
+            text += "\n";
+        }
+        txtArSchedule.setText(text);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnter;
     private javax.swing.JScrollPane jScrollPane1;

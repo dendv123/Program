@@ -187,9 +187,28 @@ public class StudentsStranica extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbStudentActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        System.out.println(School.getStudent(cbbStudent.getSelectedItem() + "").getArr()[0][0].getPredmet());
-        new DisplaySchedule(School.getStudent(cbbStudent.getSelectedItem() + "").getArr()).setVisible(true);
+        String[][] s = new String[5][7];
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 7; ++j)
+            {
+                if (School.getStudent(cbbStudent.getSelectedItem() + "").
+                        getArr()[i][j] != null)
+                {
+                    s[i][j] = School.getStudent(cbbStudent.getSelectedItem() + "").
+                        getArr()[i][j].getPredmet();
+                }
+                else
+                {
+                    s[i][j] = "-";
+                }
+            }
+        }
         dispose();
+        DisplaySchedule obj = new DisplaySchedule();
+        obj.setArea(s);
+        obj.setTitle(School.getStudent(cbbStudent.getSelectedItem() + "").getName());
+        obj.setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
     

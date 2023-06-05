@@ -184,13 +184,28 @@ public class TeachersStranica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        for (Teacher teacher : School.teachers) {
-            if (teacher.getName().equals(cbbTeacher.getSelectedItem())) {
-                new DisplaySchedule(School.getTeacher(cbbTeacher.getSelectedItem() + "").getArr()).setVisible(true);
-                dispose();
-                break;
+        String s[][] = new String[5][7];
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 7; ++j)
+            {
+                if (School.getTeacher(cbbTeacher.getSelectedItem() + "").
+                        getArr()[i][j] != null)
+                {
+                    s[i][j] = School.getTeacher(cbbTeacher.getSelectedItem() + "").
+                        getArr()[i][j].getPredmet();
+                }
+                else
+                {
+                    s[i][j] = "-";
+                }
             }
         }
+        dispose();
+        DisplaySchedule obj = new DisplaySchedule();
+        obj.setArea(s);
+        obj.setTitle(School.getTeacher(cbbTeacher.getSelectedItem() + "").getName());
+        obj.setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void cbbTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTeacherActionPerformed

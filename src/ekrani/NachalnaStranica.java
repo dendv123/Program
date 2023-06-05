@@ -7,6 +7,7 @@ package ekrani;
 import ekrani.show.StudentsStranica;
 import ekrani.show.TeachersStranica;
 import ekrani.edit.Edit;
+import ekrani.show.DisplaySchedule;
 import programa.FileOperations;
 import programa.School;
 
@@ -257,8 +258,32 @@ public class NachalnaStranica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        FileOperations.saveInfo();
         new School().generateSchedule();
+        dispose();
+        for (int i = 0; i < 15; ++i)
+        {
+            String s[][] = new String [5][7];
+            for (int k = 0; k < 5; ++k)
+            {
+                for (int j = 0; j < 7; ++j)
+                {
+                    if (School.students[i].
+                            getArr()[k][j] != null)
+                    {
+                        s[k][j] = School.students[i].
+                            getArr()[k][j].getPredmet();
+                    }
+                    else
+                    {
+                        s[k][j] = "-";
+                    }
+                }
+            }
+            DisplaySchedule obj = new DisplaySchedule();
+            obj.setArea(s);
+            obj.setTitle(School.students[i].getName());
+            obj.setVisible(true);
+        }
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
