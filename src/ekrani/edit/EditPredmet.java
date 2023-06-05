@@ -7,7 +7,7 @@ package ekrani.edit;
 import ekrani.edit.Edit;
 import programa.Predmet;
 import programa.School;
-import programa.Student;
+import programa.Students;
 import programa.Teacher;
 import sort.Sort;
 
@@ -174,7 +174,7 @@ public class EditPredmet extends javax.swing.JFrame {
         }
         else
         {
-            Student s = School.getStudent(studentOrTeacher);
+            Students s = School.getStudent(studentOrTeacher);
             if (s.getPredmeti().get(new Predmet(predmetOld)) != null)
             {
                 if (s.getPredmeti().get(new Predmet(predmetNew)) == null)

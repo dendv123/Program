@@ -2,18 +2,18 @@ package programa;
 
 import linkedList.LinkedList;
 
-public class Student {
+public class Students {
 
     private LinkedList <Predmet> predmeti = new LinkedList<>();
-    private String[][] arr = new String[5][7];
+    private Chas[][] arr = new Chas[5][7];
     private String name;
 
-    public Student(String name, LinkedList <Predmet> predmeti) {
+    public Students(String name, LinkedList <Predmet> predmeti) {
         setName(name);
         setPredmeti(predmeti);
     }
 
-    public Student() {
+    public Students() {
         this("", new LinkedList<>());
     }
 
@@ -25,12 +25,12 @@ public class Student {
         this.predmeti = predmeti;
     }
 
-    public String[][] getArr() {
+    public Chas[][] getArr() {
         return arr;
     }
 
-    public void setArr(int den, int chas, String neshto) {
-        arr[den][chas] = neshto;
+    public void setArr(int den, int chas, Chas urok) {
+        arr[den][chas] = urok;
     }
 
     public String getName() {
@@ -51,8 +51,8 @@ public class Student {
     @Override
     public boolean equals(Object obj)
     {
-        if (!(obj instanceof Student)) return false;
-        Student obj2 = (Student)obj;
+        if (!(obj instanceof Students)) return false;
+        Students obj2 = (Students)obj;
         return obj2.getName().equals(this.getName());
     }
 }

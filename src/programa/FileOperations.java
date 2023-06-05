@@ -109,10 +109,10 @@ public class FileOperations {
             List<String> s = new LinkedList<>();
             s = readerStudents.lines().collect(Collectors.toCollection(LinkedList::new));
             s.remove(0);
-            Student[] arr = new Student[15];
+            Students[] arr = new Students[15];
             int br = 0;
             for(String line : s){
-                Student newSt = new Student();
+                Students newSt = new Students();
                 String []values = line.split(",", 2);
                 newSt.setName(values[0]);
                 linkedList.LinkedList <Predmet> newPr = new linkedList.LinkedList<>();
