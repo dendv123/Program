@@ -6,6 +6,8 @@ package ekrani.show;
 
 import ekrani.NachalnaStranica;
 import ekrani.NachalnaStranica;
+import programa.School;
+import programa.Teacher;
 
 /**
  *
@@ -100,7 +102,7 @@ public class TeachersStranica extends javax.swing.JFrame {
                 .addComponent(pnlSmth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(pnlSmth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlWelcomeLayout.setVerticalGroup(
@@ -109,17 +111,27 @@ public class TeachersStranica extends javax.swing.JFrame {
             .addComponent(pnlSmth1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlWelcomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblChoose, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(lblChoose, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         cbbTeacher.setBackground(new java.awt.Color(224, 194, 135));
         cbbTeacher.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cbbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c" }));
+        cbbTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTeacherActionPerformed(evt);
+            }
+        });
 
         btnEnter.setBackground(new java.awt.Color(177, 142, 73));
         btnEnter.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnEnter.setText("Напред");
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAllLayout = new javax.swing.GroupLayout(pnlAll);
         pnlAll.setLayout(pnlAllLayout);
@@ -169,6 +181,20 @@ public class TeachersStranica extends javax.swing.JFrame {
         this.dispose();
         new NachalnaStranica().setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        for (Teacher teacher : School.teachers) {
+            if (teacher.getName().equals(cbbTeacher.getSelectedItem())) {
+                new DisplaySchedule(School.getStudent(cbbTeacher.getSelectedItem() + "").getArr()).setVisible(true);
+                dispose();
+                break;
+            }
+        }
+    }//GEN-LAST:event_btnEnterActionPerformed
+
+    private void cbbTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTeacherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbTeacherActionPerformed
 
     
     public static void Run(){

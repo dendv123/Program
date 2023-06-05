@@ -120,7 +120,7 @@
                   <Component id="pnlSmth4" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblEdit" pref="47" max="32767" attributes="0"/>
+                      <Component id="lblEdit" pref="57" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

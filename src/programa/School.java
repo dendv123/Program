@@ -59,7 +59,7 @@ public class School {
         return s;
     }
 
-    public void generateSchedule() {
+    public static void generateSchedule() {
         for (int i = 0; i < 15; i++) {
             System.out.println(students[i].getName());
             Chas arr[][] = generateStudentsSchedule(i);
@@ -77,7 +77,7 @@ public class School {
         }
     }
 
-    private Chas[][] generateStudentsSchedule(int studentsIndex) {
+    private static Chas[][] generateStudentsSchedule(int studentsIndex) {
         Students klas = students[studentsIndex];
         Predmet predmet;
         for (int i = 0; i < klas.getPredmeti().size(); i++) {
@@ -98,7 +98,7 @@ public class School {
 
     }
 
-    public void checkSchedule(Teacher teacher, int classIndex) {
+    public static void checkSchedule(Teacher teacher, int classIndex) {
 
         Students klas = students[classIndex];
         int klasChasove = klas.getPredmeti().get(teacher.getPredmet()).getChasove();
@@ -125,7 +125,7 @@ public class School {
         }
     }
 
-    private boolean addToSchedule(Students klas, Teacher teacher) {
+    private static boolean addToSchedule(Students klas, Teacher teacher) {
         String predmet = teacher.getPredmet().getName();
         Random rand = new Random();
         int den = rand.nextInt(5);
@@ -151,11 +151,16 @@ public class School {
                     if (start == 1) {
                         klas.getArr()[den][empty] = klas.getArr()[den][0];
                         klas.getArr()[den][0] = new Chas(predmet, teacher.getName());
+                        teacher.getArr()[den][empty] = teacher.getArr()[den][0];
+                        teacher.getArr()[den][0] = new Chas(predmet, klas.getName());
                     } else if (end == 5) {
                         klas.getArr()[den][empty] = klas.getArr()[den][6];
                         klas.getArr()[den][6] = new Chas(predmet, teacher.getName());
+                        teacher.getArr()[den][empty] = teacher.getArr()[den][6];
+                        teacher.getArr()[den][6] = new Chas(predmet, klas.getName());
                     } else {
                         klas.getArr()[den][empty] = new Chas(predmet, teacher.getName());
+                        teacher.getArr()[den][empty] = new Chas(predmet, klas.getName());
                     }
                 }
             } catch (NullPointerException e) {
@@ -165,6 +170,7 @@ public class School {
         for (int empty = 0; empty < 7; empty++) {
             if (klas.getArr()[den][empty] == null) {
                 klas.getArr()[den][empty] = new Chas(predmet, teacher.getName());
+                teacher.getArr()[den][empty] = new Chas(predmet, klas.getName());
                 return true;
             } else if (empty == 6) {
                 return false;

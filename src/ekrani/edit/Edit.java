@@ -1,6 +1,7 @@
 package ekrani.edit;
 
 import ekrani.NachalnaStranica;
+import programa.FileOperations;
 import programa.School;
 import sort.Sort;
 
@@ -408,7 +409,8 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditChasoveTeacherActionPerformed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        // TODO add your handling code here:
+        FileOperations.saveInfo();
+        new School().generateSchedule();
     }//GEN-LAST:event_btnShowActionPerformed
 
     public static String[] generateStudent(){
