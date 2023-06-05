@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
 import linkedList.LinkedList;
 import programa.FileOperations;
 import programa.School;
-import programa.Student;
+import programa.Students;
 
 /**
  *
@@ -202,7 +202,7 @@ public class Remove extends javax.swing.JFrame {
         }
         else
         {
-            Student s = School.getStudent(studentOrTeacher);
+            Students s = School.getStudent(studentOrTeacher);
             s.setPredmeti(new LinkedList<>());
             FileOperations.removeFromStudents(studentOrTeacher);
         }

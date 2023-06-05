@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class School {
 
     public static LinkedList<Teacher> teachers = new LinkedList<>();
-    public static Student[] students = new Student[15];
+    public static Students[] students = new Students[15];
     public static final String[] Predmeti = {"БЕЛ", "МАТ", "ФА", "ХООС", "БЗО",
         "ГИ", "ИЦ", "ФВС", "ИНФ", "ИТ", "АЕ", "НЕ", "ФИЛ"};
 
@@ -49,8 +49,8 @@ public class School {
         FileOperations.addToFile(lines, "src//files//teachers.csv");
     }
 
-    public static Student getStudent(String name) {
-        Student s = new Student();
+    public static Students getStudent(String name) {
+        Students s = new Students();
         for (int i = 0; i < 15; ++i) {
             if (name.equalsIgnoreCase(students[i].getName())) {
                 s = students[i];
@@ -65,9 +65,9 @@ public class School {
             Chas arr[][] = generateStudentsSchedule(i);
             for (int j = 0; j < 5; j++) {
                 for (int k = 0; k < 7; k++) {
-                    if(arr[j][k] == null){
+                    if (arr[j][k] == null) {
                         System.out.print("- \t");
-                    }else{
+                    } else {
                         System.out.print(arr[j][k].getPredmet() + "\t");
                     }
                 }
@@ -78,7 +78,7 @@ public class School {
     }
 
     private Chas[][] generateStudentsSchedule(int studentsIndex) {
-        Student klas = students[studentsIndex];
+        Students klas = students[studentsIndex];
         Predmet predmet;
         for (int i = 0; i < klas.getPredmeti().size(); i++) {
             predmet = klas.getPredmeti().get(i);
@@ -86,7 +86,7 @@ public class School {
             for (String x : teachers.stream().map(x -> x.getPredmet())
                     .map(x -> x.getName()).collect(Collectors.toCollection(LinkedList::new))) {
                 if (x.equals(predmet.getName())) {
-                    addToSchedule(teachers.get(teacherIndex), studentsIndex);
+                    checkSchedule(teachers.get(teacherIndex), studentsIndex);
                 }
                 if (klas.getPredmeti().get(predmet).getChasove() == 0) {
                     break;
@@ -98,61 +98,79 @@ public class School {
 
     }
 
-    public void addToSchedule(Teacher teacher, int classIndex) {
-        String predmet = teacher.getPredmet().getName();
-        Student s = students[classIndex];
-        int klasChasove = s.getPredmeti().get(teacher.getPredmet()).getChasove();
+    public void checkSchedule(Teacher teacher, int classIndex) {
+
+        Students klas = students[classIndex];
+        int klasChasove = klas.getPredmeti().get(teacher.getPredmet()).getChasove();
         int teacherChasove = teacher.getPredmet().getChasove();
-        int den, chas;
-        Random rand = new Random();
+
         if (klasChasove <= teacherChasove) {
             teacher.getPredmet().setChasove(teacherChasove - klasChasove);
             while (klasChasove > 0) {
-                den = rand.nextInt(5);
-                chas = rand.nextInt(7);
-                if (teacher.getArr()[den][chas] == null) {
-                    s.setArr(den, chas, new Chas(predmet, teacher.getName()));
-                    teacher.setArr(den, chas, new Chas(predmet, s.getName()));
+                if (addToSchedule(klas, teacher)) {
                     klasChasove--;
                 }
             }
-            s.getPredmeti().get(teacher.getPredmet()).setChasove(0);
+            klas.getPredmeti().get(teacher.getPredmet()).setChasove(0);
         } else {
-            s.getPredmeti().get(teacher.getPredmet()).setChasove(klasChasove - teacherChasove);
+            klas.getPredmeti().get(teacher.getPredmet()).setChasove(klasChasove - teacherChasove);
+
             while (teacherChasove > 0) {
-                den = rand.nextInt(5);
-                chas = rand.nextInt(7);
-                if (teacher.getArr()[den][chas] == null) {
-                    s.setArr(den, chas, new Chas(predmet, teacher.getName()));
-                    teacher.setArr(den, chas, new Chas(predmet, s.getName()));
+                if (addToSchedule(klas, teacher)) {
                     teacherChasove--;
                 }
             }
+
             teacher.getPredmet().setChasove(0);
         }
     }
 
-    public static Chas[][] merge(Chas[][] arr) {
-        Chas[][] merged = new Chas[5][7];
-        for (int den = 0; den < 5; den++) {
-            Chas[] mergedDen = new Chas[7];
-            int index = 0;
-            for (int chas = 0; chas < 7; chas++) {
-                Chas urok = arr[den][chas];
-                if (urok != null) {
-                    mergedDen[index++] = urok;
-                    arr[den][chas] = null;
-                    for (int nextChas = chas + 1; nextChas < 7; nextChas++) {
-                        if (urok.equals(arr[den][nextChas])) {
-                            mergedDen[index++] = arr[den][nextChas];
-                            arr[den][nextChas] = null;
+    private boolean addToSchedule(Students klas, Teacher teacher) {
+        String predmet = teacher.getPredmet().getName();
+        Random rand = new Random();
+        int den = rand.nextInt(5);
+        for (int start = 0; start < 7; start++) {
+            try {
+                if (klas.getArr()[den][start].getPredmet().equals(predmet)) {
+                    int end = start;
+                    try {
+                        while (klas.getArr()[den][end + 1].getPredmet().equals(predmet)) {
+                            end++;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        end = 6;
+                    }
+                    int empty = 0;
+                    for (; empty < 7; empty++) {
+                        if (klas.getArr()[den][empty] == null) {
+                            break;
+                        } else if (klas.getArr()[den][empty] != null && empty == 6) {
+                            return false;
                         }
                     }
+                    if (start == 1) {
+                        klas.getArr()[den][empty] = klas.getArr()[den][0];
+                        klas.getArr()[den][0] = new Chas(predmet, teacher.getName());
+                    } else if (end == 5) {
+                        klas.getArr()[den][empty] = klas.getArr()[den][6];
+                        klas.getArr()[den][6] = new Chas(predmet, teacher.getName());
+                    } else {
+                        klas.getArr()[den][empty] = new Chas(predmet, teacher.getName());
+                    }
                 }
-            }
-            merged[den] = mergedDen;
-        }
+            } catch (NullPointerException e) {
 
-        return merged;
+            }
+        }
+        for (int empty = 0; empty < 7; empty++) {
+            if (klas.getArr()[den][empty] == null) {
+                klas.getArr()[den][empty] = new Chas(predmet, teacher.getName());
+                return true;
+            } else if (empty == 6) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }

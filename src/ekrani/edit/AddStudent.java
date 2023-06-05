@@ -8,7 +8,7 @@ import ekrani.edit.Edit;
 import linkedList.LinkedList;
 import programa.Predmet;
 import programa.School;
-import programa.Student;
+import programa.Students;
 
 /**
  *
@@ -175,7 +175,7 @@ public class AddStudent extends javax.swing.JFrame {
         {
             return;
         }
-        Student s = School.getStudent(student);
+        Students s = School.getStudent(student);
         LinkedList <Predmet> predmeti = s.getPredmeti();
         if (predmeti.get(new Predmet(predmet)) == null)
         {
