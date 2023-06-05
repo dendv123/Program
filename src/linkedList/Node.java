@@ -1,7 +1,5 @@
 package linkedList;
 
-import programa.*;
-
 public class Node <T> {
 
     private T data;

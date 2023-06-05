@@ -5,7 +5,7 @@ import linkedList.LinkedList;
 public class Student {
 
     private LinkedList <Predmet> predmeti = new LinkedList<>();
-    private String[][] arr = new String[5][7];
+    private Chas[][] arr = new Chas[5][7];
     private String name;
 
     public Student(String name, LinkedList <Predmet> predmeti) {
@@ -25,12 +25,12 @@ public class Student {
         this.predmeti = predmeti;
     }
 
-    public String[][] getArr() {
+    public Chas[][] getArr() {
         return arr;
     }
 
-    public void setArr(int den, int chas, String neshto) {
-        arr[den][chas] = neshto;
+    public void setArr(int den, int chas, Chas urok) {
+        arr[den][chas] = urok;
     }
 
     public String getName() {

@@ -3,7 +3,7 @@ package programa;
 public class Teacher {
 
     private String name;
-    private String[][] arr = new String[5][7];
+    private Chas[][] arr = new Chas[5][7];
     private Predmet predmet;
 
     public Teacher(String name, Predmet predmet) {
@@ -27,12 +27,12 @@ public class Teacher {
         this.name = name;
     }
 
-    public String[][] getArr() {
+    public Chas[][] getArr() {
         return arr;
     }
 
-    public void setArr(int den, int chas, String neshto) {
-        arr[den][chas] = neshto;
+    public void setArr(int den, int chas, Chas urok) {
+        arr[den][chas] = urok;
     }
     
     public Predmet getPredmet() {
