@@ -1,7 +1,7 @@
 package ekrani.edit;
 
 import ekrani.NachalnaStranica;
-import programa.FileOperations;
+import fileHandler.FileOperations;
 import programa.School;
 import sort.Sort;
 

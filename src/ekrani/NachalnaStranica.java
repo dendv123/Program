@@ -8,7 +8,7 @@ import ekrani.show.StudentsStranica;
 import ekrani.show.TeachersStranica;
 import ekrani.edit.Edit;
 import ekrani.show.DisplaySchedule;
-import programa.FileOperations;
+import fileHandler.FileOperations;
 import programa.School;
 
 /**

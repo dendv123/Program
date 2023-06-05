@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package programa;
+package fileHandler;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import programa.Predmet;
+import programa.School;
+import programa.Students;
+import programa.Teacher;
 
 /**
  *

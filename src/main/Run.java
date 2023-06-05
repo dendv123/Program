@@ -1,4 +1,4 @@
-package programa;
+package main;
 
 import ekrani.NachalnaStranica;
 

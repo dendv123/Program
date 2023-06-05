@@ -7,7 +7,7 @@ package ekrani.edit;
 import ekrani.edit.Edit;
 import javax.swing.JComboBox;
 import linkedList.LinkedList;
-import programa.FileOperations;
+import fileHandler.FileOperations;
 import programa.School;
 import programa.Students;
 
