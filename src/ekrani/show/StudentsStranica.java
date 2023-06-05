@@ -7,6 +7,7 @@ package ekrani.show;
 import ekrani.NachalnaStranica;
 import ekrani.NachalnaStranica;
 import ekrani.edit.Edit;
+import programa.School;
 
 /**
  *
@@ -102,7 +103,7 @@ public class StudentsStranica extends javax.swing.JFrame {
                 .addComponent(pnlSmth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(pnlSmth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlWelcomeLayout.setVerticalGroup(
@@ -111,7 +112,7 @@ public class StudentsStranica extends javax.swing.JFrame {
             .addComponent(pnlSmth1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlWelcomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblChoose, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(lblChoose, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -127,6 +128,11 @@ public class StudentsStranica extends javax.swing.JFrame {
         btnEnter.setBackground(new java.awt.Color(177, 142, 73));
         btnEnter.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnEnter.setText("Напред");
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAllLayout = new javax.swing.GroupLayout(pnlAll);
         pnlAll.setLayout(pnlAllLayout);
@@ -179,6 +185,12 @@ public class StudentsStranica extends javax.swing.JFrame {
     private void cbbStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbStudentActionPerformed
         
     }//GEN-LAST:event_cbbStudentActionPerformed
+
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        System.out.println(School.getStudent(cbbStudent.getSelectedItem() + "").getArr()[0][0].getPredmet());
+        new DisplaySchedule(School.getStudent(cbbStudent.getSelectedItem() + "").getArr()).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEnterActionPerformed
 
     
     public void setCbbTeacherOrStudent(String []arr){

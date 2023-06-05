@@ -23,6 +23,7 @@ public class NachalnaStranica extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         FileOperations.saveInfo();
+        School.generateSchedule();
     }
 
     /**
